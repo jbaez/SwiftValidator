@@ -26,13 +26,17 @@ public class RequiredRule: Rule {
     }
     
     /**
-     Validates a field.
-     
-     - parameter value: String to checked for validation.
+     Validates field.
+
+     - parameter field: Validatable field to be validated.
      - returns: Boolean value. True if validation is successful; False if validation fails.
      */
-    public func validate(_ value: String) -> Bool {
-        return !value.isEmpty
+    public func validate(_ field: Validatable) -> Bool {
+        guard field.validationValue != nil else { return false }
+        if let stringValue = field.validationStringValue {
+            return !stringValue.isEmpty
+        }
+        return false
     }
     
     /**

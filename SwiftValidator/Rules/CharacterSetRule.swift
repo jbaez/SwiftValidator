@@ -30,12 +30,13 @@ public class CharacterSetRule: Rule {
     }
     
     /**
-     Used to validate field.
-     
-     - parameter value: String to checked for validation.
+     Validates field.
+
+     - parameter field: Validatable field to be validated.
      - returns: Boolean value. True if validation is successful; False if validation fails.
      */
-    public func validate(_ value: String) -> Bool {
+    public func validate(_ field: Validatable) -> Bool {
+        guard let value = field.validationStringValue else { return false }
         for uni in value.unicodeScalars {
             guard let uniVal = UnicodeScalar(uni.value), characterSet.contains(uniVal) else {
                 return false

@@ -33,11 +33,13 @@ public class MinLengthRule: Rule {
     }
     
     /**
-     Validates a field.
-     - parameter value: String to checked for validation.
-     - returns: A boolean value. True if validation is successful; False if validation fails.
+     Validates field.
+
+     - parameter field: Validatable field to be validated.
+     - returns: Boolean value. True if validation is successful; False if validation fails.
      */
-    public func validate(_ value: String) -> Bool {
+    public func validate(_ field: Validatable) -> Bool {
+        guard let value = field.validationStringValue else { return false }
         return value.characters.count >= DEFAULT_LENGTH
     }
     

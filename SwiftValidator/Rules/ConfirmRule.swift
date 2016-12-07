@@ -32,18 +32,20 @@ public class ConfirmationRule: Rule {
     }
     
     /**
-     Used to validate a field.
-     
-     - parameter value: String to checked for validation.
-     - returns: A boolean value. True if validation is successful; False if validation fails.
+     Validates field.
+
+     - parameter field: Validatable field to be validated.
+     - returns: Boolean value. True if validation is successful; False if validation fails.
      */
-    public func validate(_ value: String) -> Bool {
-        return confirmField.validationText == value
+    public func validate(_ field: Validatable) -> Bool {
+        guard let value = field.validationStringValue else { return false }
+        guard let confirmValue = confirmField.validationStringValue else { return false }
+        return confirmValue == value
     }
     
     /**
      Displays an error message when text field fails validation.
-     
+
      - returns: String of error message.
      */
     public func errorMessage() -> String {

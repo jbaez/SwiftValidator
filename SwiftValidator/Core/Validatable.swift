@@ -11,15 +11,22 @@ import Foundation
 public typealias ValidatableField = AnyObject & Validatable
 
 public protocol Validatable {
-    
-    var validationText: String {
+    /// Holds the value to be validated
+    var validationValue: Any? {
         get
+    }
+}
+
+extension Validatable {
+    /// Returns value as String
+    var validationStringValue: String? {
+        return validationValue as? String
     }
 }
 
 extension UITextField: Validatable {
     
-    public var validationText: String {
-        return text ?? ""
+    public var validationValue: Any? {
+        return text
     }
 }

@@ -32,8 +32,8 @@ public class ISBNRule: Rule {
      - parameter value: String to checked for validation.
      - returns: Boolean value. True if validation is successful; False if validation fails.
      */
-    public func validate(_ value: String) -> Bool {
-        
+    public func validate(_ field: Validatable) -> Bool {
+        guard let value = field.validationStringValue else { return false }
         guard let regex = try? NSRegularExpression(pattern: "[\\s-]", options: []) else {
             fatalError("Invalid ISBN sanitizing regex")
         }

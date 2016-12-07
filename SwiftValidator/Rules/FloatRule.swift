@@ -26,12 +26,13 @@ public class FloatRule:Rule {
     }
     
     /**
-     Used to validate field.
-     
-     - parameter value: String to checked for validation.
+     Validates field.
+
+     - parameter field: Validatable field to be validated.
      - returns: Boolean value. True if validation is successful; False if validation fails.
      */
-    public func validate(_ value: String) -> Bool {
+    public func validate(_ field: Validatable) -> Bool {
+        guard let value = field.validationValue as? String else { return false }
         let regex = try? NSRegularExpression(pattern: "^[-+]?(\\d*[.])?\\d+$", options: [])
         if let regex = regex {
             let match = regex.numberOfMatches(in: value, options: [], range: NSRange(location: 0, length: value.characters.count))

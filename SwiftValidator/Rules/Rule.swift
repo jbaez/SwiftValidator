@@ -12,12 +12,12 @@ import Foundation
  */
 public protocol Rule {
     /**
-     Validates text of a field.
+     Validates field.
      
-     - parameter value: String of text to be validated.
+     - parameter field: Validatable field to be validated.
      - returns: Boolean value. True if validation is successful; False if validation fails.
      */
-    func validate(_ value: String) -> Bool
+    func validate(_ field: Validatable) -> Bool
     /**
      Displays error message of a field that has failed validation.
      

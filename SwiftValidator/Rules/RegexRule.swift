@@ -30,12 +30,13 @@ public class RegexRule : Rule {
     }
     
     /**
-     Method used to validate field.
-     
-     - parameter value: String to checked for validation.
+     Validates field.
+
+     - parameter field: Validatable field to be validated.
      - returns: Boolean value. True if validation is successful; False if validation fails.
      */
-    public func validate(_ value: String) -> Bool {
+    public func validate(_ field: Validatable) -> Bool {
+        guard let value = field.validationStringValue else { return false }
         let test = NSPredicate(format: "SELF MATCHES %@", self.REGEX)
         return test.evaluate(with: value)
     }
