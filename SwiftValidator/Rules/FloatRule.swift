@@ -35,7 +35,7 @@ public class FloatRule:Rule {
         guard let value = field.validationValue as? String else { return false }
         let regex = try? NSRegularExpression(pattern: "^[-+]?(\\d*[.])?\\d+$", options: [])
         if let regex = regex {
-            let match = regex.numberOfMatches(in: value, options: [], range: NSRange(location: 0, length: value.characters.count))
+            let match = regex.numberOfMatches(in: value, options: [], range: NSRange(location: 0, length: value.count))
             return match == 1
         }
         return false
