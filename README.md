@@ -22,6 +22,9 @@ platform :ios, "8.1"
 
 use_frameworks!
 
+# Swift 4.2
+pod 'SwiftValidator', :git => 'https://github.com/jpotts18/SwiftValidator.git', :tag => '4.2.0'
+
 # Swift 3
 # Extended beyond UITextField
 pod 'SwiftValidator', :git => 'https://github.com/jpotts18/SwiftValidator.git', :branch => 'master'
@@ -107,16 +110,16 @@ func validationSuccessful() {
 	// submit the form
 }
 
-func validationFailed(errors:[(Validatable ,ValidationError)]) {
-	// turn the fields to red
-	for (field, error) in errors {
-		if let field = field as? UITextField {
-			field.layer.borderColor = UIColor.redColor().CGColor
-			field.layer.borderWidth = 1.0		
-		}
-		error.errorLabel?.text = error.errorMessage // works if you added labels
-		error.errorLabel?.hidden = false
-	}
+func validationFailed(_ errors:[(Validatable ,ValidationError)]) {
+  // turn the fields to red
+  for (field, error) in errors {
+    if let field = field as? UITextField {
+      field.layer.borderColor = UIColor.red.cgColor
+      field.layer.borderWidth = 1.0
+    }
+    error.errorLabel?.text = error.errorMessage // works if you added labels
+    error.errorLabel?.isHidden = false
+  }
 }
 
 ```

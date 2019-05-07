@@ -11,7 +11,7 @@ import Foundation
 /**
  `RequiredRule` is a subclass of Rule that defines how a required field is validated.
  */
-public class RequiredRule: Rule {
+open class RequiredRule: Rule {
     /// String that holds error message.
     private var message : String 
     
@@ -31,7 +31,7 @@ public class RequiredRule: Rule {
      - parameter field: Validatable field to be validated.
      - returns: Boolean value. True if validation is successful; False if validation fails.
      */
-    public func validate(_ field: Validatable) -> Bool {
+    open func validate(_ field: Validatable) -> Bool {
         guard field.validationValue != nil else { return false }
         if let stringValue = field.validationStringValue {
             return !stringValue.isEmpty
@@ -44,7 +44,7 @@ public class RequiredRule: Rule {
      
      - returns: String of error message.
      */
-    public func errorMessage() -> String {
+    open func errorMessage() -> String {
         return message
     }
 }
