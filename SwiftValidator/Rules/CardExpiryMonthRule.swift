@@ -30,8 +30,8 @@ public class CardExpiryMonthRule: Rule {
      - parameter value: String to check for validation.
      - returns: Boolean value. True on successful validation, otherwise False on failed Validation.
      */
-    public func validate(_ value: String) -> Bool {
-        
+    public func validate(_ field: Validatable) -> Bool {
+        guard let value = field.validationStringValue else { return false }
         guard let month = Int(value) else {
             return false
         }

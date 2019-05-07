@@ -37,7 +37,7 @@ public class ExactLengthRule : Rule {
      */
     public func validate(_ field: Validatable) -> Bool {
         guard let value = field.validationStringValue else { return false }
-        return value.characters.count == length
+        return value.count == length
     }
     
     /**

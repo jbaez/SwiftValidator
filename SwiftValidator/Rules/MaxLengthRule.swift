@@ -38,7 +38,7 @@ public class MaxLengthRule: Rule {
      */
     public func validate(_ field: Validatable) -> Bool {
         guard let value = field.validationStringValue else { return false }
-        return value.characters.count <= DEFAULT_LENGTH
+        return value.count <= DEFAULT_LENGTH
     }
     
     /**

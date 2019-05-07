@@ -32,7 +32,7 @@ public class FullNameRule : Rule {
      */
     public func validate(_ field: Validatable) -> Bool {
         guard let value = field.validationStringValue else { return false }
-        let nameArray: [String] = value.characters.split { $0 == " " }.map { String($0) }
+        let nameArray: [String] = value.split { $0 == " " }.map { String($0) }
         return nameArray.count >= 2
     }
     

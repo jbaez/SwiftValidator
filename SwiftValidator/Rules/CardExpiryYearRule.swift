@@ -35,11 +35,11 @@ public class CardExpiryYearRule: Rule {
      - parameter value: String to check for validation.
      - returns: Boolean value. True on successful validation, otherwise False on failed Validation.
      */
-    public func validate(_ value: String) -> Bool {
+    public func validate(_ field: Validatable) -> Bool {
 
         ///Holds the current year
         let thisYear = NSCalendar.current.component(Calendar.Component.year, from: Date())
-
+        guard let value = field.validationStringValue else { return false }
         guard let year = Int(value) else {
             return false
         }

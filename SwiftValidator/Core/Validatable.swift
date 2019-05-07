@@ -33,7 +33,7 @@ extension UITextField: Validatable {
 
 extension UITextView: Validatable {
     
-    public var validationText: String {
+    public var validationValue: Any? {
         return text ?? ""
     }
 }
